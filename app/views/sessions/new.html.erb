@@ -1,0 +1,17 @@
+<% provide(:title, 'Login') %>
+<div class="form content my-4">
+    <div class="jumbotron" style="background-color: #343A40;">
+        <h1 class="text-center text-white">Sign Up</h1>
+        <div class="container text-light">
+            <%= form_for(:session, url: sessions_path) do |f| %>
+                <%= f.label :email %>
+                <%= f.text_field :email, class: "form-control mb-4" %>
+
+                <%= f.label :password %>
+                <%= f.password_field :password, class: "form-control mb-4" %>
+                <%= f.submit "Login", class: "btn btn-block btn-primary" %>
+            <% end %>
+            <p>New here? <%= link_to "Sign up now!", signup_path %></p>
+        </div>
+    </div>
+</div>
