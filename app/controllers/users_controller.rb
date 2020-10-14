@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  before_action :only_loggedin_users, only: [:edit, :update]
+  before_action :only_loggedin_users, only: [:index, :edit, :update]
   before_action :correct_user, only: [:edit, :update]
 
 
@@ -33,6 +33,15 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def index
+    @users = User.paginate(page: params[:page], per_page: 10)
+  end
+
+  def destroy
+    User.find(params[:id]).destroy
+    redirect_to users_url
   end
 
 

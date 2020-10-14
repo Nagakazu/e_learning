@@ -13,4 +13,19 @@
  *= require_tree .
  *= require_self
  */
- @import "bootstrap";
+@import "bootstrap";
+
+@import url('https://fonts.googleapis.com/css2?family=Trocchi&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quantico:wght@700&display=swap');
+
+body {
+  font-family: 'Quantico', sans-serif;
+}
+
+ol {
+  list-style: none;
+}
+
+ul{
+  list-style: none;
+}
