@@ -1,6 +1,6 @@
 module SessionsHelper
   def log_in(user)
-      session[:user_id] = user.id
+    session[:user_id] = user.id
   end
 
   def logged_in?
@@ -20,5 +20,9 @@ module SessionsHelper
     if session[:user_id]
       @current_user ||= User.find_by(id: session[:user_id])
     end
+  end
+
+  def only_loggedin_users
+    redirect_to login_url unless logged_in?
   end
 end
