@@ -1,0 +1,28 @@
+<% provide(:title, 'Manage Categories') %>
+<div class="form content">
+    <h1 class="text-center mt-4">Manage Categories</h1>
+    <a href="<%= new_admin_category_path %>" class="btn btn-warning">Create Category</a>
+    <div class="container mt-4" style="clear: both;">
+        <hr>
+        <div class="row">
+            <% @categories.each do |category| %>
+                <div class="col-sm-6 my-4">
+                    <div class=container>
+                        <div class="card">
+                            <div class="card-body">
+                                <h2 class="card-title"><%= category.title %></h2>
+                                <hr>
+                                <p class="card-text"><%= category.description %></p>
+                                <a href="#" class="btn btn-primary">EDIT</a>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+        <hr class="my-4">
+        <div class="d-flex justify-content-center">
+            <%= will_paginate %>
+        </div>
+    </div>
+</div>

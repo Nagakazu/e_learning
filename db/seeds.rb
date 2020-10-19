@@ -5,7 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create!(name: "Kazuki Nagahiro", email: "kazuki@email.com", password: "password", password_confirmation: "password")
+User.create!(name: "Admin", email: "admin@email.com", password: "password", password_confirmation: "password", admin: true)
+User.create!(name: "Kazuki", email: "kazuki@email.com", password: "password", password_confirmation: "password")
 
 60.times do |n|
   name = Faker::Name.name
@@ -24,3 +25,4 @@ followers =users[3..40]
 
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
+
