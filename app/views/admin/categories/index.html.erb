@@ -6,10 +6,17 @@
         <hr>
         <div class="row">
             <% @categories.each do |category| %>
-                <div class="col-6 my-4">
-                    <h2><%= category.title %></h2>
-                    <hr>
-                    <p><%= category.description %></p>
+                <div class="col-sm-6 my-4">
+                    <div class=container>
+                        <div class="card">
+                            <div class="card-body">
+                                <h2 class="card-title"><%= category.title %></h2>
+                                <hr>
+                                <p class="card-text"><%= category.description %></p>
+                                <a href="#" class="btn btn-primary">EDIT</a>
+                            </div>    
+                        </div>
+                    </div>
                 </div>
             <% end %>
         </div>
