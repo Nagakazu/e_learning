@@ -1,11 +1,24 @@
 <% provide(:title, 'Users') %>
 <div class="form content">
-    <h1 class="text-center mt-4">categories</h1>
-    <div class="container">
+    <h1 class="text-center mt-4">Category Lists</h1>
+    <div class="container mt-4">
         <hr>
-        <ul class="categories">
-            
-        </ul>
+        <div class="row">
+            <% @categories.each do |category| %>
+                <div class="col-sm-6 my-4">
+                    <div class=container>
+                        <div class="card">
+                            <div class="card-body">
+                                <h2 class="card-title"><%= category.title %></h2>
+                                <hr>
+                                <p class="card-text"><%= category.description %></p>
+                                <a href="#" class="btn btn-primary">LEARN</a>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
         <hr class="my-4">
         <div class="d-flex justify-content-center">
             <%= will_paginate %>
