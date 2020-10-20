@@ -1,19 +1,22 @@
 <% provide(:title, 'Manage Categories') %>
 <div class="form content">
     <h1 class="text-center mt-4">Manage Categories</h1>
-    <a href="<%= new_admin_category_path %>" class="btn btn-warning">Create Category</a>
+    <%= link_to "Create Category", new_admin_category_path, class: "btn btn-warning float-right mb-2" %>
     <div class="container mt-4">
-        <hr>
+        <hr style="clear: both;">
         <div class="row">
             <% @categories.each do |category| %>
                 <div class="col-sm-6 my-4">
                     <div class=container>
                         <div class="card">
                             <div class="card-body">
-                                <h2 class="card-title"><%= category.title %></h2>
-                                <hr>
+                                <h2 class="card-title float-left"><%= category.title %></h2>
+                                <div class="d-inline float-right"> 
+                                    <%= link_to "Delete", admin_category_path(category), method: :delete, data: { confirm: "You sure?"} %>
+                                </div>
+                                <hr style="clear: both;">
                                 <p class="card-text"><%= category.description %></p>
-                                <a href="#" class="btn btn-primary">EDIT</a>
+                                <%= link_to "Edit", edit_admin_category_path(category), class:"btn btn-primary float-right" %>
                             </div>    
                         </div>
                     </div>
