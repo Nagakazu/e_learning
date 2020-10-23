@@ -5,23 +5,7 @@
     <div class="container mt-4">
         <hr style="clear: both;">
         <div class="row">
-            <% @categories.each do |category| %>
-                <div class="col-sm-6 my-4">
-                    <div class=container>
-                        <div class="card">
-                            <div class="card-body">
-                                <h2 class="card-title float-left"><%= category.title %></h2>
-                                <div class="d-inline float-right"> 
-                                    <%= link_to "Delete", admin_category_path(category), method: :delete, data: { confirm: "You sure?"} %>
-                                </div>
-                                <hr style="clear: both;">
-                                <p class="card-text"><%= category.description %></p>
-                                <%= link_to "Edit", edit_admin_category_path(category), class:"btn btn-primary float-right" %>
-                            </div>    
-                        </div>
-                    </div>
-                </div>
-            <% end %>
+            <%= render 'category_list' %>
         </div>
         <hr class="my-4">
         <div class="d-flex justify-content-center">

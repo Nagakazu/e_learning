@@ -9,11 +9,17 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   delete '/logout', to: 'sessions#destroy'
 
+
   resources :users do
     member do
       get :following, :followers
     end
   end
+
+  resources :words, only: [:index, :show]
+    namespace :admin do
+      resources :words, only: [:index, :new, :create, :show,  :edit, :destroy, :update]
+    end
 
   resources :categories, only: [:index, :show]
     namespace :admin do
