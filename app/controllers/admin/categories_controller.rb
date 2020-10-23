@@ -10,7 +10,6 @@ class Admin::CategoriesController < ApplicationController
     if @category.save
       redirect_to admin_categories_path
     else
-      abort
       render 'new'
     end
   end
