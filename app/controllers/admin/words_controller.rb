@@ -7,9 +7,9 @@ class Admin::WordsController < ApplicationController
 
   def create
     @category = Category.find_by(params[:category_id])
-    @word = @category.words.new(word_params)
+    @word = @category.words.build(word_params)
     if @word.save
-      redirect_to admin_words_path
+      redirect_to admin_category_path(@category)
     else
       render 'new'
     end
@@ -21,7 +21,8 @@ class Admin::WordsController < ApplicationController
   end
 
   def show
-    @word = Word.find(params[:id])
+    @category = Category.find(params[:id])
+    @words = Word.find_by(params[:category_id])
   end
 
   def edit

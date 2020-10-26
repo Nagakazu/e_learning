@@ -3,10 +3,15 @@ before_action :only_loggedin_users, only: [:index, :show]
 
   def show
     @category = Category.find(params[:id])
+    @words = Word.find_by(params[:category_id])
+
+
   end
 
   def index
     @categories = Category.paginate(page: params[:page], per_page: 10)
+    @words = Word.find_by(params[:category_id])
+
   end
 
   private
