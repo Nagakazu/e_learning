@@ -6,22 +6,23 @@ class Admin::WordsController < ApplicationController
   end
 
   def create
-    @category = Category.find_by(params[:category_id])
+    @category = Category.find(params[:category_id])
+    # @word = Word.new(word_params)
     @word = @category.words.build(word_params)
     if @word.save
-      redirect_to admin_category_path(@category)
+      redirect_to admin_categories_url
     else
+      # abort
       render 'new'
     end
   end
 
   def destroy
     Word.find(params[:id]).destroy
-    redirect_to admin_words_path
+    redirect_to admin_categories_url
   end
 
   def show
-    @category = Category.find(params[:id])
     @words = Word.find_by(params[:category_id])
   end
 
@@ -32,7 +33,7 @@ class Admin::WordsController < ApplicationController
   def update
     @word = Word.find(params[:id])
     if @word.update_attributes(word_params)
-      redirect_to "#"
+      redirect_to admin_categories_url
     else
       render 'edit'
     end

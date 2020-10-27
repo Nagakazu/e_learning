@@ -1,0 +1,11 @@
+<%= form_for ([:admin_category, @word]) do |f| %>
+        <%= f.label :word %>
+        <%= f.text_field :word, class: "form-control mb-4" %>
+        <%# 3.times do |f| %>
+            <%# f.fields_for :choices do |choice| %>
+                <%# choice.label :choice %>
+                <%# choice.text_field :choice, class: "form-control mb-4" %>
+            <%# end %>
+        <%# end %>      
+    <%= f.submit yield(:button_text), class:"btn btn-block btn-primary mt-4" %>
+<% end %>
