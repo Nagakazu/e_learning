@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  
-  before_action :only_loggedin_users, only: [:index, :edit, :update, :destroy, :following, :followers]
+  before_action :require_admin, only: [:destroy]
+  before_action :only_loggedin_users, only: [:index, :edit, :update, :following, :followers]
   before_action :correct_user, only: [:edit, :update]
 
 

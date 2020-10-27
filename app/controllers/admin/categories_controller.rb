@@ -1,5 +1,6 @@
 class Admin::CategoriesController < ApplicationController
-  before_action :if_not_admin
+  # before_action :if_not_admin
+  before_action :require_admin
 
   def new
     @category = Category.new
@@ -8,7 +9,7 @@ class Admin::CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to admin_categories_path
+      redirect_to admin_categories_url
     else
       render 'new'
     end
@@ -21,6 +22,7 @@ class Admin::CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
+    @words = @category.words.all
   end
 
   def edit
@@ -41,9 +43,9 @@ class Admin::CategoriesController < ApplicationController
   end
 
   private
-  def if_not_admin
-    redirect_to root_path unless current_user.admin?
-  end
+  # def if_not_admin
+  #   redirect_to root_path unless current_user.admin?
+  # end
   
   def category_params
     params.require(:category).permit(:title, :description)

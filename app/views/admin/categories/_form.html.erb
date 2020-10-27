@@ -1,0 +1,9 @@
+<%= form_for ([:admin, @category]) do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control mb-4" %>
+
+    <%= f.label :decsription %>
+    <%= f.text_field :description, class: "form-control mb-4" %>
+
+    <%= f.submit yield(:button_text), class:"btn btn-block btn-primary mt-4" %>
+<% end %>

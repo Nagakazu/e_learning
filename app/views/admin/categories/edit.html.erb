@@ -1,17 +1,10 @@
 <% provide(:title, "Edit Category") %>
+<% provide(:button_text, 'Save Changes') %>
 <div class="form content my-4">
     <div class="jumbotron" style="background-color: #343A40;">
         <h1 class="text-center text-white">Edit Category</h1>
         <div class="container text-light">
-            <%= form_for ([:admin, @category]) do |f| %>
-                <%= f.label :title %>
-                <%= f.text_field :title, class: "form-control mb-4" %>
-
-                <%= f.label :decsription %>
-                <%= f.text_field :description, class: "form-control mb-4" %>
-
-                <%= f.submit "Save Changes", class:"btn btn-block btn-primary mt-4" %>
-            <% end %>
+            <%= render 'form' %>
         </div>
     </div>
 </div>

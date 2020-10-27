@@ -1,21 +1,11 @@
 <% provide(:title, "Create Word") %>
+<% provide(:button_text, 'Create') %>
+
 <div class="form content my-4">
     <div class="jumbotron" style="background-color: #343A40;">
         <h1 class="text-center text-white">Create New Word</h1>
         <div class="container text-light">
-            <%= form_for ([:admin, @word]) do |f| %>
-                <%= f.label :word %>
-                <%= f.text_field :word, class: "form-control mb-4" %>
-
-                <%# 3.times do |f| %>
-                    <%# f.fields_for :choices do |choice| %>
-                        <%# choice.label :choice %>
-                        <%# choice.text_field :choice, class: "form-control mb-4" %>
-                    <%# end %>
-                <%# end %>
-                
-                <%= f.submit "Create Word", class:"btn btn-block btn-primary mt-4" %>
-            <% end %>
+            <%= render 'form' %>
         </div>
     </div>
 </div>
