@@ -2,17 +2,21 @@ class Admin::WordsController < ApplicationController
   before_action :if_not_admin
 
   def new
-    @word = Word.new
+    @category = Category.find(params[:category_id])
+    @word = @category.words.build
+    3.times do
+      @word.choices.build
+    end
   end
 
   def create
     @category = Category.find(params[:category_id])
-    # @word = Word.new(word_params)
     @word = @category.words.build(word_params)
+    @word.category_id = params[:category_id]
     if @word.save
       redirect_to admin_categories_url
     else
-      # abort
+    abort
       render 'new'
     end
   end
@@ -27,7 +31,11 @@ class Admin::WordsController < ApplicationController
   end
 
   def edit
+    @category = Category.find(params[:category_id])
     @word = Word.find(params[:id])
+    3.times do
+      @choice = Choice.find_by(params[:word_id])
+    end
   end
 
   def update
@@ -49,6 +57,6 @@ class Admin::WordsController < ApplicationController
   end
 
   def word_params
-    params.require(:word).permit(:word, :category_id)
+    params.require(:word).permit(:word, choices_attributes: [:id, :choice, :correct])
   end
 end
