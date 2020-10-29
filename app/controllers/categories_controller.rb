@@ -1,6 +1,10 @@
 class CategoriesController < ApplicationController
 before_action :only_loggedin_users, only: [:index, :show]
 
+  def new
+    @category = Category.find(params[:id])
+  end
+
   def show
     @words = Word.find_by(params[:category_id])
   end

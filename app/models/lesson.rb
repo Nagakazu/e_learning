@@ -1,5 +1,4 @@
 class Lesson < ApplicationRecord
-  # has_many :categories
-
+  belongs_to :category
   belongs_to :user
 end
