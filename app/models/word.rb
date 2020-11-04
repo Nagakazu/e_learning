@@ -7,4 +7,8 @@ class Word < ApplicationRecord
 
   validates :word, presence: true
   validates :category_id, presence: true
+
+  def correct_answer
+    choices.find_by(correct: true).choice 
+  end
 end

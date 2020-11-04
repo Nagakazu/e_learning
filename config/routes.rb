@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :relationships
   # resources :category, only: [:index, :show]
+  # resources :answers
   
   root 'static_pages#home'
   
@@ -23,5 +24,9 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :categories
+  resources :categories do
+    resources :lessons do
+      resources :answers
+    end
+  end
 end

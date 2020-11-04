@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_22_072421) do
+ActiveRecord::Schema.define(version: 2020_10_29_062929) do
+
+  create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "lesson_id"
+    t.integer "word_id"
+    t.integer "choice_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
@@ -33,8 +41,11 @@ ActiveRecord::Schema.define(version: 2020_10_22_072421) do
   create_table "lessons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
     t.integer "category_id"
+    t.integer "result"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id", "created_at"], name: "index_lessons_on_category_id_and_created_at"
+    t.index ["user_id", "created_at"], name: "index_lessons_on_user_id_and_created_at"
   end
 
   create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

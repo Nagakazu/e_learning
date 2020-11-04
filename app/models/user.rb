@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :passive_relationships, foreign_key: "followed_id", class_name: "Relationship", dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :follower
 
-  has_many :lesson, dependent: :destroy
+  has_many :lessons, dependent: :destroy
 
   validates :name, presence: true, length: { minimum: 5 }
 

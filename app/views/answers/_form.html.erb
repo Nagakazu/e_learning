@@ -1,0 +1,6 @@
+<%= form_for ([@category, @lesson, @answer]) do |f| %>
+    <%= hidden_field_tag :word_id, word.id %>
+    <%= hidden_field_tag :choice_id, choice.id %>
+    <%= hidden_field_tag :page, @word.next_page %>
+    <p><%= f.submit choice.choice, class: "btn btn-primary my-2 w-100" %></p>
+<% end %>

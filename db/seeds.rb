@@ -26,3 +26,8 @@ followers =users[3..40]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
 
+4.times do
+  title = Faker::Games::Pokemon.unique.name
+  description = Faker::Games::Pokemon.unique.move
+  category =  Category.create!(title: title, description: description)
+end
