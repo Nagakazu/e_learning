@@ -6,7 +6,7 @@
                     <h2 class="card-title"><%= category.title %></h2>
                     <hr>
                     <p class="card-text"><%= category.description %></p>
-                    <% render 'learn' %>
+                    <div class="float-right"><%= render 'learn', category: category %></div>
                 </div>    
             </div>
         </div>

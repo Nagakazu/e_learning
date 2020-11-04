@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2020_10_29_062929) do
   create_table "lessons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
     t.integer "category_id"
+    t.integer "result"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id", "created_at"], name: "index_lessons_on_category_id_and_created_at"
